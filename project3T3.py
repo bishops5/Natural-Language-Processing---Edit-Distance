@@ -63,11 +63,9 @@ def computeEditDistance(initial, goal):
     initial = contrct_punct(initial)
     goal = contrct_punct(goal)
 
-    print(initial, goal)
     initial_token = nltk.word_tokenize(initial)
     goal_token = nltk.word_tokenize(goal)
 
-    print(initial_token, goal_token)
     rows = len(initial_token) + 1
     columns = len(goal_token) + 1
     table = [[0 for x in range(columns)] for y in range(rows)]
@@ -111,7 +109,6 @@ def computeEditDistance(initial, goal):
     edit_dist = table[rows - 1][columns - 1]
     # Below, initial is put into a set to have only unique words without any repetitions
     m_unigrams = set(initial_token)
-    print(m_unigrams)
     ed_score = 1 - (float(edit_dist) / len(m_unigrams))
     # For in the EDScore formula, only the max value of either ed_score or 0 should be returned
     if ed_score > 0:
