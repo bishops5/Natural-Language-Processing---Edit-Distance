@@ -1,4 +1,4 @@
-# Project 3 T3
+# Project 3 T3 and T4
 # CSC_470
 # Sam Bishop and Yash Dhayal
 
@@ -49,23 +49,24 @@ def contrct_punct(str):
     return str
 
 
-def computeEditDistance(initial, goal):
+def normalizeSentence(sentence):
     # first need to normalize both sentences
     # lowercase the sentences
-    initial = initial.lower()
-    goal = goal.lower()
+    sentence = sentence.lower()
 
     # removing extra whitespaces (via regex) in off chance there is any
-    initial = re.sub(' +', ' ', initial)
-    goal = re.sub(' +', ' ', goal)
+    sentence = re.sub(' +', ' ', sentence)
 
     #expand contractions
-    initial = contrct_punct(initial)
-    goal = contrct_punct(goal)
+    sentence = contrct_punct(sentence)
 
-    initial_token = nltk.word_tokenize(initial)
-    goal_token = nltk.word_tokenize(goal)
+    #tokenize sentence
+    sentence_token = nltk.word_tokenize(sentence)
 
+    return sentence_token
+
+
+def computeEditDistance(initial_token, goal_token):
     rows = len(initial_token) + 1
     columns = len(goal_token) + 1
     table = [[0 for x in range(columns)] for y in range(rows)]
@@ -107,7 +108,7 @@ def computeEditDistance(initial, goal):
     # EDScore = max(1 - edit-dist(M,C)/|M_{unigrams}|,0), so either some value or 0 will be returned
 
     edit_dist = table[rows - 1][columns - 1]
-    # Below, initial is put into a set to have only unique words without any repetitions
+    # Below, initial token is put into a set to have only unique words without any repetitions
     m_unigrams = set(initial_token)
     ed_score = 1 - (float(edit_dist) / len(m_unigrams))
     # For in the EDScore formula, only the max value of either ed_score or 0 should be returned
@@ -115,6 +116,7 @@ def computeEditDistance(initial, goal):
         return ed_score, ptrTable
     else:
         return 0, ptrTable
+
 
 # Alignment String building
 def aliString(ptrTable):
@@ -132,8 +134,23 @@ def aliString(ptrTable):
             x = f"{ptr.getAction()}, {x}"
         # Update the pointer
         ptr = ptrTable[ptr.i][ptr.j]
+
     # Return full alignment string
     return x
+
+
+# will give Percent Match value
+def percentMatch(initial_token, goal_token):
+    m_unigrams = set(initial_token)
+    c_unigrams = set(goal_token)
+
+    # finding the intersection of the 2 unigrams
+    m_intersect_c = m_unigrams.intersection(c_unigrams)
+
+    #percent match formula
+    pm = (float(len(m_intersect_c))/len(m_unigrams))
+    #return pm
+    return pm
 
 
 # Compute edit distance between two words
@@ -143,10 +160,15 @@ if __name__ == "__main__":
     initial = input("Enter first sentence: ")
     goal = input("Enter second sentence: ")
 
-    # Compute and output edit distance
-    editDistance, ptrTable = computeEditDistance(initial, goal)
-    print(f"The edit distance score from '{initial}' to '{goal}' is {editDistance}")
+    #normalize initial and goal
+    initial_norm = normalizeSentence(initial)
+    goal_norm = normalizeSentence(goal)
+    print(f"Normalized form of '{initial}' is: {initial_norm}")
+    print(f"Normalized form of '{goal}' is: {goal_norm} \n")
 
-    # Output alignment
-    print(f"The alignment from '{initial}' to '{goal}' is: ")
+    # Compute and output edit distance
+    editDistance, ptrTable = computeEditDistance(initial_norm, goal_norm)
+    print(f"The alignment from '{initial_norm}' to '{goal_norm}' is:")
     print(aliString(ptrTable))
+    print(f"\nThe Edit Distance Score from '{initial}' to '{goal}' is {editDistance}\n")
+    print(f"The Percent Match value of '{initial}' to '{goal}' is {percentMatch(initial_norm, goal_norm)}")
