@@ -172,3 +172,5 @@ if __name__ == "__main__":
     print(aliString(ptrTable))
     print(f"\nThe Edit Distance Score from '{initial}' to '{goal}' is {editDistance}\n")
     print(f"The Percent Match value of '{initial}' to '{goal}' is {percentMatch(initial_norm, goal_norm)}")
+
+    
