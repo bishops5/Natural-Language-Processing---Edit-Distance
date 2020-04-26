@@ -1,0 +1,21 @@
+D4. Responses to the following questions:
+
+What was easy about this assignment?
+
+They easy parts of this assignment was having all the equations having been explained in class previously. The edit distance portion should have been the hardest to figure out but it was much easier since we had a whole lecture on how the algorithm worked. There was little to figure out in the math portions of the assignment. T3 and T4 were simply just creating equations that fit in with our previous scripts. 
+
+What was challenging about this assignment?
+
+The most challenging part for our group was T5 and communication. Sam and Yash were the only people who worked on the project with the other member not answering multiple emails, canvas messages and other forms of communication. T5 was challenging because of the tmx file having lots of interesting things about it. Some of those were having lines that were not any translations and contained single lines such as <tuv> that would enter into the 10,000 random translations. It took a decent amount of time to normalize the data so the lines chosen at random were acceptable. The time constraint also made it challenging. Nearing the end of the semester we have tons of assignments due and the 8-day deadline made it tough to prioritize our time. 
+
+What did you like about this assignment?
+
+As a group we enjoyed the subject matter as whole. Understanding how things such as google translate works is extremely interesting. Edit distance is used in so many modern day applications, figure out how the backend works is super interesting. We also enjoyed being able to see the algorithm work in T5 with picking the random lines and seeing the top 10 selections. As a group we always enjoy seeing our algorithm work in many different ways.
+
+What did you dislike about this assignment?
+
+There was not much we did not enjoy, however there was a few things. Mainly was the time constraint at such a time like the end of the semester. Another was one of our partners not responding to our messages. One of those was not able to be controlled by the assignment itself but it was a part that made the assignment unenjoyable to an extent. 
+
+What did you learn from this assignment? 
+
+We learned about edit distance and the use it has in real world applications. Another thing we learned is being able to edit XML documents and extract the things we needed such as translations in consecutive lines. We learned a lot of time management on this project as well.
