@@ -24,8 +24,6 @@ def computeEditDistance(start_tk, end_tk):
             alitab[i][0] = (i - 1, 0, 1)
 
     # Complete edit distance table using Dynamic Programming outlined in class
-    # Will use EDScore instead of edit distance
-    # EDScore = max(1 - edit-dist(M,C)/|M_{unigrams}|,0)
     for i in range(1, rows):
         for j in range(1, columns):
             # Costs for all edit operations is now 1
