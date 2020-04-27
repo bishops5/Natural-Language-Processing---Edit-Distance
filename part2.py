@@ -149,6 +149,7 @@ def computeEditDistance(start_tk, end_tk):
         return 0, aliString
 
 # will give Percent Match value
+# COUNTER to keep track of what MTBT sentence is being evaulated
 counter = 0
 def percentMatch(start_tk, end_tk):
     m_unigrams = set(start_tk)
@@ -230,16 +231,18 @@ if __name__ == "__main__":
                 }
                 topEDs.append(dictionary)
                 topEDs.sort(key = lambda l: l["score"], reverse=True)
-        # Print out top 10 pm and ed results for this sentence here - Format this better*************************************************
+        # Print out top 10 pm and ed results for the sentences here
         counter+=1
         print ('\n')
-        print("THE FOLLOWING OUTPUT IS THE  " )
-        print(counter)
+        print("THE FOLLOWING OUTPUT IS SENTENCE NUMBER:  " ) 
+        print(counter) 
         print ("PERCENT MATCH")
+        
+        
         print(topPMs)
 
         print('\n')
-        print("THE FOLLOWING OUTPUT IS THE  " )
+        print("THE FOLLOWING OUTPUT IS SENTENCE NUMBER:  " )
         print(counter)
         print ("EDIT DISTANCE")
         print(topEDs)
