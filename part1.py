@@ -1,3 +1,7 @@
+
+# NLP Project 3
+# Sam Bishop and Yash Dhayal
+
 import sys
 import nltk
 import re
@@ -27,7 +31,7 @@ def computeEditDistance(start_tk, end_tk):
             # Costs for all edit operations is now 1
             delete = table[i - 1][j] + 1
             insert = table[i][j - 1] + 1
-            subcost = 1 if start_tk[i - 1] != end_tk[j - 1] else 0
+            subcost = 2 if start_tk[i - 1] != end_tk[j - 1] else 0
             sub = table[i - 1][j - 1] + subcost
             # Min cost of edit distance table overall
             minCost = min(delete, insert, sub)
